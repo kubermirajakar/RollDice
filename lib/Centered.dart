@@ -11,11 +11,11 @@ class Centered extends StatefulWidget {
 
 class _CenteredState extends State<Centered> {
   var imgesPhoto = 'assets/images/dice-1.png';
-
+  var randomiser = Random();
+  var currentRoll = 1;
   void roll() {
-    var rollDo = Random().nextInt(6) + 1;
     setState(() {
-      imgesPhoto = 'assets/images/dice-$rollDo.png';
+      currentRoll = randomiser.nextInt(6) + 1;
     });
   }
 
@@ -25,7 +25,7 @@ class _CenteredState extends State<Centered> {
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.asset(
-            imgesPhoto,
+            'assets/images/dice-$currentRoll.png',
             width: 200,
           ),
           SizedBox(
